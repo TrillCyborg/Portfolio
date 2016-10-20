@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Paper from 'material-ui/Paper';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-import { FaCamera, FaVideoCamera } from 'react-icons/lib/fa';
+import { FaCamera, FaVideoCamera, FaMicrophone } from 'react-icons/lib/fa';
 
 const styles = {
   bottomNavigationPaper: {
@@ -24,6 +24,11 @@ const BottomNav = ({ select, selectedIndex }) => (
         label="Broadcast Room"
         icon={<FaVideoCamera />}
         onTouchTap={() => select(1)}
+      />
+      <BottomNavigationItem
+        label="Vocal Transformer"
+        icon={<FaMicrophone />}
+        onTouchTap={() => select(2)}
       />
     </BottomNavigation>
   </Paper>

@@ -1,8 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { setVidFilter, setVidStyle, setFilterSlider } from '../../actions/WebRTC';
-import { FilterList, FilterSlider, VideoPlayer } from './';
+import RaisedButton from 'material-ui/RaisedButton';
+import {
+  setVidFilter,
+  setVidStyle,
+  setVidElement,
+  setFilterSlider,
+  setCanvasElement,
+  addPhoto,
+} from '../../actions/WebRTC';
+import {
+  FilterList,
+  FilterSlider,
+  VideoPlayer,
+  PhotoList,
+} from './';
 
 const styles = {
   grid: {
@@ -20,6 +33,7 @@ class FilterBooth extends Component {
     super(props);
     this.setFilter = this.setFilter.bind(this);
     this.handleFilterSlider = this.handleFilterSlider.bind(this);
+    this.capturePhoto = this.capturePhoto.bind(this);
   }
 
   componentWillMount() {
@@ -61,6 +75,12 @@ class FilterBooth extends Component {
     }
   }
 
+  capturePhoto() {
+    const context = this.props.canvasElement.getContext('2d');
+    context.drawImage(this.props.vidElement, 0, 0, 345, 258);
+    this.props.addPhoto(this.props.canvasElement.toDataURL('image/png'));
+  }
+
   render() {
     return (
       <Grid style={styles.grid}>
@@ -78,7 +98,16 @@ class FilterBooth extends Component {
             </Row>
           </Col>
           <Col sm={6}>
-            <VideoPlayer src={this.props.vidSrc} style={this.props.vidStyle} />
+            <VideoPlayer
+              src={this.props.vidSrc}
+              style={this.props.vidStyle}
+              reference={this.props.setVidElement}
+            />
+            <RaisedButton label="Capture Image" fullWidth onClick={this.capturePhoto} />
+            <canvas id="canvas" style={{ display: 'none' }} ref={this.props.setCanvasElement} />
+          </Col>
+          <Col sm={3}>
+            <PhotoList photos={this.props.photos} />
           </Col>
         </Row>
       </Grid>
@@ -91,20 +120,32 @@ FilterBooth.propTypes = {
   filterSlider: PropTypes.number.isRequired,
   vidSrc: PropTypes.string,
   vidStyle: PropTypes.object,
+  vidElement: PropTypes.element,
+  canvasElement: PropTypes.element,
+  photos: PropTypes.array.isRequired,
   setVidFilter: PropTypes.func.isRequired,
   setVidStyle: PropTypes.func.isRequired,
+  setVidElement: PropTypes.func.isRequired,
+  setCanvasElement: PropTypes.func.isRequired,
   setFilterSlider: PropTypes.func.isRequired,
+  addPhoto: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   vidSrc: state.webRTC.vidSrc,
   vidFilter: state.webRTC.vidFilter,
   vidStyle: state.webRTC.vidStyle,
+  vidElement: state.webRTC.vidElement,
+  photos: state.webRTC.photos,
+  canvasElement: state.webRTC.canvasElement,
   filterSlider: state.webRTC.filterSlider,
 });
 
 export default connect(mapStateToProps, {
   setVidFilter,
   setVidStyle,
+  setVidElement,
+  setCanvasElement,
   setFilterSlider,
+  addPhoto,
 })(FilterBooth);
