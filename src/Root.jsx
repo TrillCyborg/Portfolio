@@ -17,4 +17,4 @@ const Main = () => (
   </Provider>
 );
 
-ReactDOM.render(<Main />, document.getElementById('main'));
+ReactDOM.render(<Main />, document.getElementById('root'));
