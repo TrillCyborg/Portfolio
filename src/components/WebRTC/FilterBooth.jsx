@@ -78,7 +78,13 @@ class FilterBooth extends Component {
   capturePhoto() {
     const context = this.props.canvasElement.getContext('2d');
     context.drawImage(this.props.vidElement, 0, 0, 345, 258);
-    this.props.addPhoto(this.props.canvasElement.toDataURL('image/png'));
+    this.props.addPhoto({
+      url: this.props.canvasElement.toDataURL('image/png'),
+      style: {
+        WebkitFilter: this.props.vidStyle.WebkitFilter,
+        filter: this.props.vidStyle.filter,
+      },
+    });
   }
 
   render() {

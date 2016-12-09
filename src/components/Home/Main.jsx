@@ -6,7 +6,7 @@ import Card from '../Card';
 
 const Home = () => (
   <div>
-    <div style={{ backgroundColor: 'black', height: 400, marginBottom: 20 }} />
+    <div style={{ marginBottom: 20 }} />
     <Grid>
       <Col sm={9}>
         <Card>
