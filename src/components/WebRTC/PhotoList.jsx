@@ -8,7 +8,7 @@ const getImages = photos => (
       cols={1}
       rows={1}
     >
-      <img alt="should load screenshot here" src={photo} />
+      <img alt="should load screenshot here" src={photo.url} style={{ ...photo.style }} />
     </GridTile>
   )).reverse()
 );
