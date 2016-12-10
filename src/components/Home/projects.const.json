@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Portfolio (This Site)",
+    "link": "https://github.com/TrillCyborg",
+    "description": "This is my portfolio. It's a simple site to showcase my work and display my contact info. I've created it using some of my favorite libraries in the React ecosystem. It's open source so feel free to checkout the repo to see how it works."
+  },
+  {
+    "title": "4 Hour App",
+    "link": "https://github.com/TrillCyborg/4-hour-app",
+    "description": "I'm a big fan of Tim Ferris and his work. Perticularly The 4 Hour Workweek. This is a companion app that I made to be able to follow along better with the book. It features a very costumized todo list, a dreamline planner, pomodoro timer and other concepts from the book. I built this app for offline use with React, Redux and Electron."
+  },
+  {
+    "title": "Wingplan",
+    "link": "http://wingplan.me",
+    "isWebsite": true,
+    "description": "Wingplan is an itinerary marketplace I worked on for a few months. This was my first React / Redux project. I built it all from the ground up using Node with Express for the backend, Redis for sessions and MongoDB for all other data. I integrated some third party services into the app like AWS S3 and Google Maps. The front-end primarily uses bootstrap for all styling but I built up a basic understanding of Sketch to make some nice custom components for some of the pages. This site and repo are no longer in my control so I can't garuentee it's up or running properly."
+  }
+]

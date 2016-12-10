@@ -73,11 +73,13 @@ const LinkRow = () => {
 
 const NavBar = () => (
   <AppBar
-    title={<LinkRow />}
-    iconElementLeft={<Avatar src={profilePic} style={styles.myAvatar} />}
+    title="Jason Werner"
+    showMenuIconButton={false}
     iconElementRight={<IconRow />}
   />
 );
+// iconElementLeft={<Avatar src={profilePic} style={styles.myAvatar} />}
+// title={<LinkRow />}
 
 IconLink.propTypes = {
   url: PropTypes.string.isRequired,
